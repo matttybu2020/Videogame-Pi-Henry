@@ -1,8 +1,90 @@
-const { Router } = require('express');
-//const axios = require('axios');
+const { Router } = require("express");
+const axios = require("axios");
 const router = Router();
+const { API_KEY } = process.env;
+const { Videogame, Genre } = require("../db");
 
+//!  GET /videogame/:idVideogame
 
+//consulto el detalle que viene por id
+router.get("/:idVideogame", async (req, res) => {
+  const { idVideogame } = req.params;
 
+  if (idVideogame.includes("-")) {
+    let videogameDb = await Videogame.findOne({
+      where: {
+        id: idVideogame,
+      },
+      include: Genre,
+    });
+
+    // parseo el objeto
+
+    videogameDb = JSON.stringify(videogameDb);
+    videogameDb = JSON.parse(videogameDb);
+
+    // dejo un array con los nombres de genero
+
+    videogameDb.genres = videogameDb.genres.map((g) => g.name);
+    res.json(videogameDb);
+  } else {
+    try {
+      // buscamos en la api
+      const response = await axios.get(
+        `https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`
+      );
+
+      let {
+        id,
+        name,
+        background_image,
+        genres,
+        description,
+        released: releaseDate,
+        rating,
+        platforms,
+      } = response.data;
+      genres = genres.map((g) => g.name); // array con generos
+      platforms = platforms.map((p) => p.platforms.name); // array con las plataformas
+      return res.json({
+        id,
+        name,
+        background_image,
+        description,
+        releaseDate,
+        rating,
+      });
+    } catch (error) {
+      return console.log(error);
+    }
+  }
+});
+
+//! POST /Videogame
+
+router.post("/", async (req, res) => {
+  let { name, description, releaseDate, rating, genres, platforms } = req.body;
+  platforms = platforms.join(', ')
+    
+  const juegoExito = "Sea Creado Correctamente su Juego desde el Back";
+  try {
+    
+    const juegoCreado = await Videogame.findOrCreate({
+      // devuelve un array
+      where: {
+        name,
+        description,
+        releaseDate,
+        rating,
+        platforms
+      },
+    });
+    await juegoCreado[0].setGenres(genres); // realizo id de genres con el de juego creado
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.send(juegoExito);
+});
 
 module.exports = router;
