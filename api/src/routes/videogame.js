@@ -1,16 +1,16 @@
 const { Router } = require("express");
 const axios = require("axios");
 const router = Router();
-const { API_KEY } = process.env;
+//const { API_KEY } = process.env;
 const { Videogame, Genre } = require("../db");
 
 //!  GET /videogame/:idVideogame
 
 //consulto el detalle que viene por id
 router.get("/:idVideogame", async (req, res) => {
-  const { idVideogame } = req.params;
+  const { idVideogame } = req.params
 
-  if (idVideogame.includes("-")) {
+  if (idVideogame.includes('-')) {
     let videogameDb = await Videogame.findOne({
       where: {
         id: idVideogame,
@@ -25,13 +25,14 @@ router.get("/:idVideogame", async (req, res) => {
 
     // dejo un array con los nombres de genero
 
-    videogameDb.genres = videogameDb.genres.map((g) => g.name);
+    videogameDb.genres = videogameDb.genres.map(g => g.name);
     res.json(videogameDb);
   } else {
     try {
       // buscamos en la api
       const response = await axios.get(
-        `https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`
+       // `https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`
+        `https://api.rawg.io/api/games/${idVideogame}?key=97903335d1af41fe98802e32b6d78580`
       );
 
       let {
@@ -44,12 +45,13 @@ router.get("/:idVideogame", async (req, res) => {
         rating,
         platforms,
       } = response.data;
-      genres = genres.map((g) => g.name); // array con generos
-      platforms = platforms.map((p) => p.platforms.name); // array con las plataformas
+      genres = genres.map(g => g.name); // array con generos
+      platforms = platforms.map(p => p.platforms.name); // array con las plataformas
       return res.json({
         id,
         name,
         background_image,
+        genres,
         description,
         releaseDate,
         rating,
@@ -61,14 +63,13 @@ router.get("/:idVideogame", async (req, res) => {
 });
 
 //! POST /Videogame
-
+/*
 router.post("/", async (req, res) => {
   let { name, description, releaseDate, rating, genres, platforms } = req.body;
-  platforms = platforms.join(', ')
-    
-  const juegoExito = "Sea Creado Correctamente su Juego desde el Back";
+  platforms = platforms.join(", ");
+
+  //const juegoExito = "Se a Creado Correctamente su Juego desde el Back";
   try {
-    
     const juegoCreado = await Videogame.findOrCreate({
       // devuelve un array
       where: {
@@ -76,7 +77,7 @@ router.post("/", async (req, res) => {
         description,
         releaseDate,
         rating,
-        platforms
+        platforms,
       },
     });
     await juegoCreado[0].setGenres(genres); // realizo id de genres con el de juego creado
@@ -84,7 +85,29 @@ router.post("/", async (req, res) => {
     console.log(error);
   }
 
-  res.send(juegoExito);
+  res.send("Se a Creado Correctamente su Juego desde el Back");
+});*/
+router.post('/', async (req, res) => {  
+  let { name,image, description, releaseDate, rating, platforms, genres} = req.body;
+  platforms = platforms.toString();
+  const addVgame = await Videogame.create({
+     name,
+     image,
+     description,
+     releaseDate,
+     rating, 
+     platforms
+  })
+
+//Find videogame genres from Genres table       
+ const vgenre = await Genre.findAll({
+     where:{name : genres}
+ })
+ //genro la asociacion
+ addVgame.addGenre(vgenre)
+
+  res.send('Se a Creado Correctamente su Juego desde el Back')
 });
+
 
 module.exports = router;
