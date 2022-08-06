@@ -1,9 +1,11 @@
 import React from 'react'
-
-
+import Pagina404 from '../../img/Pagina404.gif'
+//import './Page404.css'
 export default function Page404(){
     return(
-        <div> <h1>soy Page404</h1></div>
+        <div className='contendor'> 
+        <img src={Pagina404} alt=""/>
+        </div>
 
     ) 
 

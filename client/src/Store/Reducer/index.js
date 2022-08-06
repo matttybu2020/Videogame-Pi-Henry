@@ -1,5 +1,5 @@
 
-import {GET_ALL_GAMES} from '../Action/constantes'
+import {GET_ALL_GAMES ,GET_ALL_GENRES} from '../Action/constantes'
 
 const initialState = {
     allGames: [],
@@ -11,7 +11,7 @@ const initialState = {
 
 }
 
- function rootReducer(state = initialState,action){
+export default function rootReducer(state = initialState,action){
 
     switch (action.type) {
         case GET_ALL_GAMES:
@@ -22,6 +22,12 @@ const initialState = {
                 filteredGames: action.payload
 
             };
+
+            case GET_ALL_GENRES:
+                return {
+                    ...state,
+                    genres: action.payload
+                };
             default: 
             return state;
 
@@ -31,4 +37,3 @@ const initialState = {
 
 
 
-export default rootReducer;
