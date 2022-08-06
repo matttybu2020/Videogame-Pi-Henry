@@ -109,5 +109,17 @@ router.post('/', async (req, res) => {
   res.send('Se a Creado Correctamente su Juego desde el Back')
 });
 
-
+/*//! Delete a videogame probar
+  router.post('/delete/:name', async (req, res) => {
+  const { name } = req.params;
+  console.log('Delete de: ', name)
+  try {
+   const elem = await Videogame.destroy({
+      where: {name: `${name}`}
+   });
+  } catch (error) {
+      res.send(`Error in route /videogames/delete ${error}`);
+  }
+  res.send('Videogame has been deleted');
+});*/
 module.exports = router;

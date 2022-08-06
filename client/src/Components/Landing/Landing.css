@@ -1,0 +1,9 @@
+.Principal{
+    
+        position: absolute;
+        left:18%;
+        right: 28%;
+        top:5%;
+        animation: myAnim 1s ease 0s infinite normal forwards;
+   
+}
