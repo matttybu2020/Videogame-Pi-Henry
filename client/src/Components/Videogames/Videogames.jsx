@@ -5,6 +5,7 @@ import { getAllGenres } from "../../Store/Action/index";
 import { getAllGames } from "../../Store/Action/index";
 import Videogame from "../Videogame/Videogame.jsx";
 import Pagination from "../Pagination/Pagination";
+import '../Videogames/Videogames.css'
 //import NavBar from "../NavBar/NavBar.jsx";
 //import SearchBar from "../SearchBar/SearchBar.jsx";
 //import Filtrado from "../Filtrado/Filtrado.jsx";

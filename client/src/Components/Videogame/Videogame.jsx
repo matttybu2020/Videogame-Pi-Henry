@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Create from "../../img/Create.jpg";
-
+import '../Videogame/Videogame.css'
 
 
 
