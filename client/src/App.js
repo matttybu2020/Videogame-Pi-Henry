@@ -9,12 +9,14 @@ import CrearJuego from "../src/Components/CrearJuego/CrearJuego.jsx";
 import Videogames from "../src/Components/Videogames/Videogames.jsx";
 import JuegoDetalles from "../src/Components/JuegoDetalles/JuegoDetalles.jsx";
 import Page404 from "../src/Components/Page404/Page404.jsx";
-
+//import NavBar from "./Components/NavBar/NavBar.jsx";
+//<Route exact path="/" component={NavBar} />
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Landing} />
+       
         <Route exact path="/videogames" component={Videogames} />
         <Route exact path="/crearjuego" component={CrearJuego} />
         <Route exact path="/videogame/:idVideogame" component={JuegoDetalles} />

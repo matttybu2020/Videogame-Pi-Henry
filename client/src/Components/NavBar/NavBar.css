@@ -1,0 +1,20 @@
+.navbar-div {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar-div button{
+    font-family: 'Press Start 2P';
+    padding: 10px;
+    margin: 20px;
+    border-radius: 30px;
+    background-color: rgb(11, 103, 156);
+    color:rgb(230, 235, 208);
+    box-shadow: 6px 5px 9px 4px #80e0f1
+}
+.navbar-div button:hover {
+    background-color: rgb(8, 8, 8);
+    color:rgb(220, 243, 241)
+}

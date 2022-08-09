@@ -39,7 +39,7 @@ export default function Videogame(props) {
       <div className="div-button">
         {props.id && (
           <Link to={`/videogame/${props.id}`}>
-            <button className="Link">Details</button>
+            <button className="Link">Detalles</button>
           </Link>
         )}
       </div>

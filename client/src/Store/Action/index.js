@@ -21,19 +21,15 @@ export function getAllGames() {
 
 //! traigo todos generos
 
-export  function getAllGenres() {
-    return function (dispatch){
-        axios.get('http://localhost:3001/genres').then((res)=>{
-            dispatch({
-                type: GET_ALL_GENRES,
-                payload:res.data
-            })
-            .catch((err) =>{
-                return err;
-            })
-        })
-
-    }
-
-
+export function getAllGenres() {
+  return function (dispatch) {
+    axios
+      .get(`http://localhost:3001/genres`)
+      .then((res) => {
+        dispatch({ type: GET_ALL_GENRES, payload: res.data });
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
 }
