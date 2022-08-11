@@ -9,7 +9,7 @@ router.get("/", async (_req, res) => {
     //si los tengo cargados en la Db los consumo desde alli
     const generosDb = await Genre.findAll();
     if (generosDb.length) return res.json(generosDb);
-    // else se vabuscar ala api
+    // else se va buscar ala api
 
     const response = await axios.get(
       `https://api.rawg.io/api/genres?key=${API_KEY}`

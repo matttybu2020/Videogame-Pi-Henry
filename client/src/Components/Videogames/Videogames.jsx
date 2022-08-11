@@ -7,12 +7,10 @@ import Videogame from "../Videogame/Videogame.jsx";
 import Pagination from "../Pagination/Pagination";
 import '../Videogames/Videogames.css'
 import NavBar from "../NavBar/NavBar.jsx";
-//import SearchBar from "../SearchBar/SearchBar.jsx";
-//import Filtrado from "../Filtrado/Filtrado.jsx";
+import SearchBar from "../SearchBar/SearchBar.jsx";
+import Filtrado from "../Filtrado/Filtrado.jsx";
 
 
-//<SearchBar />
-//<Filtrado />
 
 
 
@@ -54,12 +52,10 @@ function Videogames({allGames, getAllGames, getAllGenres }) {
 
   return (
     <div className="container">
-    
      <NavBar />
-  
-       
-     
-      <Pagination
+     <SearchBar />
+     <Filtrado />
+     <Pagination
         cardPerPage={cardPerPage}
         totalCards={allGames.length}
         paginate={paginate}

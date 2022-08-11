@@ -20,7 +20,7 @@ export default function Videogame(props) {
       <div className="infoRating">
         {
           <p>
-            <strong>Rating</strong>: ★ {`${props.rating}`}
+            <strong>Rating</strong>: 🎮 {`${props.rating}`}
           </p>
         }
       </div>
