@@ -106,10 +106,10 @@ function CrearJuego(props) {
     e.preventDefault();
     validate(form);
     let checkboxsErrors = [];
-    if (form.genres.length < 1) checkboxsErrors.push("Generos Requiere");
-    if (form.platforms.length < 1)
-      checkboxsErrors.push("Plataforma Requiere");
-    if (Object.values(errors).length || checkboxsErrors.length) {
+    if (form.genres.length < 1 || form.genres.length <3 ||form.genres.length >6) checkboxsErrors.push("Requiere un minimo de 5 Generos");
+    if (form.platforms.length < 1 || form.platforms.length <3  || form.platforms.length <4 )
+      checkboxsErrors.push("Requiere un minimo de 3 Plataformas ");
+    if (Object.values(errors).length || checkboxsErrors.length ) {
       // Object.values --> retorno un array con los values
 
       return alert(Object.values(errors).concat(checkboxsErrors).join("\n"));

@@ -140,7 +140,7 @@ router.post('/', async (req, res,next) => {
   platforms = platforms.toString();
 
   //! Control de Errores 
-  
+
   if(!name || !description || !platforms){
     return res.status(404).json({msg: "Faltan enviar datos"})
 }
@@ -185,5 +185,24 @@ catch (error) {
       res.send(`Error in route /videogames/delete ${error}`);
   }
   res.send('Videogame has been deleted');
-});*/
+});
+
+router.delete("/videogame/:id", deleteGame)
+
+
+*/
+
+//! Search all videogames platforms
+/*
+router.get('/', async (_req, res) => {  
+  var apiresult = await axios.get(`https://api.rawg.io/api/platforms/lists/parents?key=${API_KEY}`)
+  var apivgplat = apiresult.data.results.map(p => p.name)
+  res.send(apivgplat)
+})    
+
+//const platformRouter = require('./platforms');
+//router.use('/platforms',platformRouter);
+
+*/
+
 module.exports = router;

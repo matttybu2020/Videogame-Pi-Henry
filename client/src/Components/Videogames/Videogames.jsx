@@ -9,13 +9,14 @@ import '../Videogames/Videogames.css'
 import NavBar from "../NavBar/NavBar.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import Filtrado from "../Filtrado/Filtrado.jsx";
-
+import GameOver from "../GameOver/GameOver";
 
 
 
 
 import Loading3 from "../../img/Loading3.gif";
-import gameover1 from "../../img/gameover1.gif";
+//import gameover1 from "../../img/gameover1.gif";
+//<img className="no" src={gameover1} alt=""></img>
 
 
 
@@ -48,7 +49,7 @@ function Videogames({allGames, getAllGames, getAllGenres }) {
   useEffect (() => {
       getAllGames()
       getAllGenres()
-  }, [])
+  }, [getAllGames, getAllGenres])
 
   return (
     <div className="container">
@@ -75,7 +76,8 @@ function Videogames({allGames, getAllGames, getAllGenres }) {
           ))
         ) : typeof currentCards === "string" ? (
           <div>
-            <img className="nonono" src={gameover1} alt=""></img>
+            <GameOver />
+            
           </div>
         ) : (
           <div>
