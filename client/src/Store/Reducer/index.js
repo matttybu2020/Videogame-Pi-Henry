@@ -31,9 +31,9 @@ export default function rootReducer(state = initialState,action){
             case VIDEO_DETAIL:
                 return{
                     ...state,
-                    detailGames:action.payload
+                    detailGames: action.payload
 
-                }
+                };
             case SEARCH_NAME:
                 return {
                     ...state,

@@ -46,7 +46,7 @@ export function searchName(name) {
 
 export function getVideoDetail(id) {
   return function (dispatch) {
-    axios.get (`http://localhost:3001/videogames/${id}`)
+    axios.get (`http://localhost:3001/videogame/${id}`)
     .then((res) =>{
       dispatch({
         type:VIDEO_DETAIL,
@@ -81,7 +81,7 @@ export function getAllGenres() {
 
 export function order(order) {
   return function (dispatch) {
-    dispatch ({
+    dispatch ({type:
       ORDER, payload:order
 
     })
@@ -90,14 +90,11 @@ export function order(order) {
 
 }
 
-
-
-
 //!   Filtrado
 
 export function filtrado(order) {
   return function (dispatch) {
-    dispatch ({
+    dispatch ({type:
       FILTRADO, payload:order
 
     })
@@ -109,8 +106,6 @@ export function filtrado(order) {
 
 
 //todo Prueba Beta DELETE
-
-
 export const deleteGame = (id) => async (dispatch) => {
   try {
       await axios.delete(`http://localhost:3001/videogames/${id}`)
