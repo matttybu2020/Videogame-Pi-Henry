@@ -1,7 +1,7 @@
 import React from "react";
 import { order, filtrado } from "../../Store/Action/index";
 import { connect } from "react-redux";
-
+import './Filtrado.css'
 function Filtrado({ order,  genres ,filtrado, }) {
 
 

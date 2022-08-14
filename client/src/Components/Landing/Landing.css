@@ -7,3 +7,43 @@
         animation: myAnim 1s ease 0s infinite normal forwards;
        
 }
+.contenedor{
+        margin: auto;
+         display: table;
+}
+h2{
+        font-family: 'Bungee Shade';
+        float: left;
+        color: rgb(233, 243, 247);
+        position: relative;
+        font-size: 3em;
+        text-shadow: 2px 4px rgb(8, 8, 8);
+        box-shadow: rgb(16, 16, 16)
+
+}
+h2 span {
+        position:absolute;
+        right: 0;
+        width: 0;
+        /* From https://css.glass */
+background: rgba(15, 15, 15, 0.18);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(2.5px);
+-webkit-backdrop-filter: blur(2.5px);
+border: 1px solid rgba(15, 15, 15, 0.3);
+        border-left: 1px solid #000;
+        animation: maquina 3s infinite alternate steps(45);
+}
+
+@keyframes maquina {
+        from {
+                width: 100%;
+        }
+        to {
+                width: 0%;
+        }
+}
+
+
+

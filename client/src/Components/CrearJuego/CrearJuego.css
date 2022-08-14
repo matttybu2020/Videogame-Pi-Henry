@@ -1,8 +1,9 @@
 .main-add{
     display: flex;
     justify-content: center;
-    background: white 
-    center/cover no-repeat;
+    background: rgb(12,20,46);
+    background: linear-gradient(90deg, rgba(12,20,46,1) 0%, rgba(46,117,245,0.45702030812324934) 25%, rgba(70,155,172,1) 90%);
+   
 }
 
 
@@ -35,7 +36,8 @@
     border: 2px solid black;
     width:650px;
   
-    background-color: rgb(246, 240, 230);
+    background: rgb(12,20,46);
+    background: linear-gradient(90deg, rgb(227, 232, 251) 0%, rgba(187, 211, 255, 0.457) 25%, rgba(70,155,172,1) 90%);
 }
 
 .plat-div {
@@ -45,7 +47,8 @@
     border: 2px solid black;
     width:650px;
     
-    background-color: rgb(249, 240, 225);
+    background: rgb(12,20,46);
+    background: linear-gradient(90deg, rgb(208, 216, 243) 0%, rgba(127, 169, 249, 0.457) 25%, rgba(70,155,172,1) 90%);
 }
 
 .container-add label {

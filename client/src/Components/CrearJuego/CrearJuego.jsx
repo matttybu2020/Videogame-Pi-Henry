@@ -17,6 +17,8 @@ function CrearJuego(props) {
     platforms: [],
   });
 
+
+  
   function onInputChange(e) {
     e.preventDefault();
     setForm({
@@ -30,6 +32,8 @@ function CrearJuego(props) {
       })
     );
   }
+
+
 
    const handleChange = (e) => {
     if (e.target.parentNode.parentNode.id === "genres") {
@@ -83,12 +87,12 @@ function CrearJuego(props) {
       errors.name = "EL Nombre del Juego no Puede ser Menor a 5 Caracteres!!!";
     }
     if (!form.description) {
-      errors.description = "Descripcion Requiere";
+      errors.description = "EL Juego Requiere una Descripcion";
     } else if (form.description.length < 8) {
       errors.description = "La Descripcion no Puede ser Menor a 8 Caracteres!!!";
     }
     if (!form.rating) {
-      errors.rating = "Rating Requiere";
+      errors.rating = "Ingrese valor de Rating ";
     } else if (!/^[1-5]$/.test(form.rating)) {
       errors.rating = "EL valor no puede ser mayor a 5";
     }
@@ -107,7 +111,7 @@ function CrearJuego(props) {
     validate(form);
     let checkboxsErrors = [];
     if (form.genres.length < 1 || form.genres.length <3 ||form.genres.length >6) checkboxsErrors.push("Requiere un minimo de 5 Generos");
-    if (form.platforms.length < 1 || form.platforms.length <3  || form.platforms.length <4 )
+    if (form.platforms.length < 1 || form.platforms.length <3  || form.platforms.length >4 )
       checkboxsErrors.push("Requiere un minimo de 3 Plataformas ");
     if (Object.values(errors).length || checkboxsErrors.length ) {
       // Object.values --> retorno un array con los values
@@ -126,7 +130,7 @@ function CrearJuego(props) {
       <NavBar />
       <div className="main-add">
         <div className="container-add">
-          <h1>Crear aqui Tu Juego</h1>
+          <h1>🕹️🎮Crea aqui Tu Juego 🕹️🎮</h1>
           <div className="div-cont">
             <form onSubmit={handleSubmit} onChange={handleChange}>
               <label htmlFor="name" className="title-name">

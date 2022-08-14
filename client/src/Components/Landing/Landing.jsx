@@ -12,6 +12,12 @@ export default function Landing() {
         <img className="LaImagen" src={start} alt="" />
       </Link>
     </div>
+   <div className="contenedor">
+  
+   <h2>🕹️🕹️🎮 Welcome to The Video Game 🕹️🕹️🎮<span>&#160;</span></h2>
+
+    
+   </div>
    
 
     </>
