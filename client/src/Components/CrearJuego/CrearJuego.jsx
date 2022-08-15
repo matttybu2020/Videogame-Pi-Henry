@@ -4,78 +4,66 @@ import axios from "axios";
 import "./CrearJuego.css";
 import NavBar from "../NavBar/NavBar.jsx";
 
+
+
 function CrearJuego(props) {
+
   const [errors, setErrors] = useState({ form: "Debe completar el formulario" });
   
   const [form, setForm] = useState({
-    name: "",
-    description: "",
-    releaseDate: "",
-    image: "",
-    rating: 0,
-    genres: [],
-    platforms: [],
+        name: '',
+        description: '',
+        releaseDate: '',
+        rating: 0,
+        genres: [],
+        platforms: []
   });
 
 
-  
-  function onInputChange(e) {
-    e.preventDefault();
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    setErrors(
-        validate ({
-        ...form,
-        [e.target.name]: e.target.value,
-      })
-    );
-  }
+ 
 
 
-
-   const handleChange = (e) => {
+   const handleChange = e => {
     if (e.target.parentNode.parentNode.id === "genres") {
       if (e.target.checked) {
-        setForm((prevState) => ({
+        setForm(prevState => ({
           ...prevState,
-          genres: form.genres.concat(e.target.value),
-        }));
+          genres: form.genres.concat(e.target.value)
+        }))
       } else {
-        setForm((prevState) => ({
+        setForm(prevState => ({
           ...prevState,
-          genres: form.genres.filter((x) => e.target.value !== x),
-        }));
+          genres: form.genres.filter(x => e.target.value !== x)
+        }))
       }
     }
     if (e.target.parentNode.parentNode.id === "platforms") {
       if (e.target.checked) {
-        setForm((prevState) => ({
+        setForm(prevState => ({
           ...prevState,
           platforms: form.platforms.concat(e.target.name),
         }));
       } else {
-        setForm((prevState) => ({
+        setForm(prevState => ({
           ...prevState,
-          platforms: form.platforms.filter((x) => e.target.name !== x),
-        }));
+          platforms: form.platforms.filter(x => e.target.name !== x),
+        }))
       }
     }
     if (e.target.type !== "checkbox") {
-      setForm((prevState) => ({
+      setForm(prevState => ({
         ...prevState,
-        [e.target.name]: e.target.value,
-      }));
+        [e.target.name]: e.target.value
+      }))
 
     }
     setErrors(
       validate({
         ...form,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
       })
-    );
-  };
+    )
+  }
 
 
 
@@ -83,8 +71,8 @@ function CrearJuego(props) {
     let errors = {};
     if (!form.name) {
       errors.name = "EL Juego Requiere un Nombre";
-    } else if (form.name.length < 5) {
-      errors.name = "EL Nombre del Juego no Puede ser Menor a 5 Caracteres!!!";
+    } else if (form.name.length < 6) {
+      errors.name = "EL Nombre del Juego no Puede ser Menor a 6 Caracteres!!!";
     }
     if (!form.description) {
       errors.description = "EL Juego Requiere una Descripcion";
@@ -96,13 +84,7 @@ function CrearJuego(props) {
     } else if (!/^[1-5]$/.test(form.rating)) {
       errors.rating = "EL valor no puede ser mayor a 5";
     }
-    if(!form.image){
-        errors.image = "Requiere una imagen";
-    }else if (!/(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(form.image))
-    {setForm({...form,
-    image:""})
-
-    }
+   
     return errors;
   };
 
@@ -110,7 +92,7 @@ function CrearJuego(props) {
     e.preventDefault();
     validate(form);
     let checkboxsErrors = [];
-    if (form.genres.length < 1 || form.genres.length <3 ||form.genres.length >6) checkboxsErrors.push("Requiere un minimo de 5 Generos");
+    if (form.genres.length < 1 || form.genres.length <3 || form.genres.length >6)checkboxsErrors.push("Requiere un minimo de 5 Generos");
     if (form.platforms.length < 1 || form.platforms.length <3  || form.platforms.length >4 )
       checkboxsErrors.push("Requiere un minimo de 3 Plataformas ");
     if (Object.values(errors).length || checkboxsErrors.length ) {
@@ -189,17 +171,7 @@ function CrearJuego(props) {
               />
               <br />
               <br />
-              <div>
-                  <label>🖼️ Imagen URL: </label>
-                  <input
-                    name="image"
-                    type="text"
-                    placeholder="Ingrese imagen URL"
-                    value={form.image}
-                    onchange={onInputChange}
-                    
-                  ></input>
-                </div>
+             
                 <br />
               <label className="title-name">
                 <strong>🎮 Seleccione Generos: </strong>
@@ -207,17 +179,17 @@ function CrearJuego(props) {
               <br />
               <div id="genres" className="genres-div">
                 <div className="Action">
-                  <input name="Action" value="2" type="checkbox" id="Action" />
+                  <input name="Action" value="Action" type="checkbox" id="Action" />
                   <label htmlFor="Action">Action.</label>
                 </div>
                 <div className="indie">
-                  <input name="Indie" value="1" type="checkbox" id="Indie" />
+                  <input name="Indie" value="Indie" type="checkbox" id="Indie" />
                   <label htmlFor="Indie">Indie.</label>
                 </div>
                 <div className="Adventure">
                   <input
                     name="Adventure"
-                    value="3"
+                    value="Adventure"
                     type="checkbox"
                     id="Adventure"
                   />
@@ -361,9 +333,39 @@ function CrearJuego(props) {
     </>
   );
 }
-
 export default CrearJuego;
-/*export default function CrearJuego(){
+
+
+/*
+
+ <div>
+                  <label htmlFor="image">🖼️ Imagen URL: </label>
+                  <input
+                    name="image"
+                    type="text"
+                    placeholder="Ingrese imagen URL"
+                    value={form.image}
+                    onChange={(e) => onInputChange(e)}
+                     if(!form.image){
+        errors.image = "Requiere una imagen";
+    }else if (!/(https?:\/\/.*\.(?:png|jpg|jpeg))/i.test(form.image))
+    {setForm({...form,
+    image:""})
+
+    }
+  <div>
+                  <label>🖼️ Imagen URL: </label>
+                  <input
+                    name="image"
+                    type="text"
+                    placeholder="Ingrese imagen URL"
+                    value={form.image}
+                    onchange={onInputChange}
+                    
+                  ></input>
+                </div>
+
+export default function CrearJuego(){
 
     return (
 

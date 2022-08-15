@@ -9,7 +9,6 @@ function Filtrado({ order,  genres ,filtrado, }) {
     filtrado(e.target.value);
   };
  
-
   const handleSelect2= (e) => {
     order(e.target.value);
   };

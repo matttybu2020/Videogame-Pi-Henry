@@ -14,7 +14,7 @@ export default function Landing() {
     </div>
    <div className="contenedor">
   
-   <h2>🕹️🕹️🎮 Welcome to The Video Game 🕹️🕹️🎮<span>&#160;</span></h2>
+   <h2>🕹️🕹️🎮 Welcome to VideoGames 🕹️🕹️🎮<span>&#160;</span></h2>
 
     
    </div>

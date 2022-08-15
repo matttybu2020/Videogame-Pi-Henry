@@ -136,7 +136,7 @@ router.post("/", async (req, res) => {
 router.post('/', async (req, res,next) => {  
 
   try {
-    let { name,image, description, releaseDate, rating, platforms, genres} = req.body;
+    let { name, description, releaseDate, rating, platforms, genres} = req.body;
   platforms = platforms.toString();
 
   //! Control de Errores 
@@ -146,7 +146,6 @@ router.post('/', async (req, res,next) => {
 }
   const addVgame = await Videogame.create({
      name,
-     image,
      description,
      releaseDate,
      rating, 

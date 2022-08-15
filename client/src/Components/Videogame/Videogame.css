@@ -45,18 +45,21 @@ border: 1px solid rgba(140, 240, 242, 1);
     margin-bottom: 20px;
     font-size:x-large;
     font-weight: 600;
-    color: #1411d1;
+    color: #0f0f13;
+    text-shadow:1px 1px 2px beige;
 }
 
 .infoContGenres {
     display: flex;
     justify-content: center;
+    text-shadow:1px  2px beirgb(190, 190, 180)
 }
 
 .infoRating {
     display: flex;
     justify-content: center;
     height: 45px;
+    text-shadow:1px 1px 2px beige;
 }
 
 .div-button {

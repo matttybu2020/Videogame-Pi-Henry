@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { getVideoDetail } from '../../Store/Action/index'
 import Navbar from '../NavBar/NavBar.jsx'
 import './JuegoDetalles.css'
-import photo from '../../img/photo.png'
+import Create from '../../img/Create.jpg'
 
  function JuegoDetalles(props){
 
@@ -23,13 +23,15 @@ import photo from '../../img/photo.png'
           {detailGames ? (
             <div>
               <h3 className="title">{detailGames.name}</h3>
+              
               {detailGames.background_image ? (
                 <div className="div-img">
+                  
                   <img src={detailGames.background_image} alt="Videogame"></img>
                 </div>
               ) : (
                 <div className="div-img">
-                  <img src={photo} alt="Videogame"></img>
+                  <img src={Create} alt="Videogame"></img>
                 </div>
               )}
               {
